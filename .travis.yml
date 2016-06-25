@@ -1,0 +1,18 @@
+sudo: required
+services:
+  - docker
+language: php
+php:
+  - 7.0
+  - nightly
+install:
+  - composer self-update
+  - composer install
+script:
+  - phpunit --configuration phpunit.xml
+  - phpunit tests/QueryTest.php
+  - phpunit tests/ProjectionTest.php
+# whitelist
+branches:
+  only:
+    - master
